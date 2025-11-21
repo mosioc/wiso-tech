@@ -29,10 +29,11 @@ export default function Home() {
           alt="Turborepo logo"
           width={180}
           height={38}
+          priority
         />
         <ol>
           <li>
-            Get started by editing <code>running</code>
+            Get started by editing <code>apps/web/app/page.tsx</code>
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
