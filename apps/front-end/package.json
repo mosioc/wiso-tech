@@ -26,5 +26,19 @@
     "@types/react-dom": "19.2.2",
     "eslint": "^9.39.1",
     "typescript": "5.9.2"
+  },
+  "husky": {
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged",
+        "pre-push": "pnpm run lint && pnpm run format"
+      }
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "pnpm run lint",
+      "pnpm run format"
+    ]
   }
 }

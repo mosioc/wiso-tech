@@ -22,21 +22,5 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
-  },
-  "husky": {
-    "husky": {
-      "hooks": {
-        "pre-commit": "lint-staged",
-        "pre-push": "pnpm run lint && pnpm run format"
-      }
-    }
-  },
-   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx}": [
-      "pnpm run lint",
-      "pnpm run format"
-    ]
   }
 }
-  
-
