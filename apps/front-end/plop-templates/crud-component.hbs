@@ -1,0 +1,43 @@
+import React, { useState, useEffect } from 'react';
+{{#if typescript}}
+type Item = { id: number, name: string };
+{{/if}}
+const {{pascalCase name}} = () => {
+  const [items, setItems] = useState{{#if typescript}}<Item[]>{{/if}}([{ id: 1, name: 'Item 1' }]);
+  const [newName, setNewName] = useState{{#if typescript}}<string>{{/if}}('');
+
+  const handleCreate = () => {
+    if (!newName.trim()) return;
+    setItems([...items, { id: Date.now(), name: newName }]);
+    setNewName('');
+  };
+  const handleUpdate = (id: number) => {
+    const updated = prompt('Edit item name:');
+    if (updated)
+      setItems(items.map(item => item.id === id ? { ...item, name: updated } : item));
+  };
+  const handleDelete = (id: number) => setItems(items.filter(item => item.id !== id));
+
+  return (
+    <div>
+      <h2>{{pascalCase name}} CRUD</h2>
+      <input
+        value={newName}
+        onChange={e => setNewName(e.target.value)}
+        placeholder="New item"
+      />
+      <button onClick={handleCreate}>Add</button>
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>
+            {item.name}
+            <button onClick={() => handleUpdate(item.id)}>Edit</button>
+            <button onClick={() => handleDelete(item.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default {{pascalCase name}};

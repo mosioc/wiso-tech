@@ -1,0 +1,20 @@
+import { useState } from 'react';
+{{#if typescript}}
+type {{pascalCase name}}State = {
+  value: string;
+  // Add more state fields here as needed
+};
+{{/if}}
+export function use{{pascalCase name}}() {
+  const [state, setState] = useState{{#if typescript}}<{{pascalCase name}}State>{{/if}}({{#if typescript}}{ value: '' }{{else}}{ value: '' }{{/if}});
+
+  // Example handler
+  const setValue = (val{{#if typescript}}: string{{/if}}) => {
+    setState(prev => ({ ...prev, value: val }));
+  };
+
+  return {
+    state,
+    setValue
+  };
+}

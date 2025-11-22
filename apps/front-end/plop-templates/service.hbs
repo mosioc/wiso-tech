@@ -1,0 +1,37 @@
+// Service for {{pascalCase name}}
+{{#if typescript}}
+export type {{pascalCase name}} = {
+  id: number;
+  name: string;
+};
+
+{{/if}}
+export const {{camelCase name}}Service = {
+  getAll: async (){{#if typescript}}: Promise<{{pascalCase name}}[]>{{/if}} => {
+    // TODO: implement fetch all logic
+    return Promise.resolve([
+      { id: 1, name: 'Item 1' }
+    ]);
+  },
+
+  create: async (data{{#if typescript}}: Omit<{{pascalCase name}}, 'id'>{{/if}}){{#if typescript}}: Promise<{{pascalCase name}}>{{/if}} => {
+    // TODO: implement create logic
+    return Promise.resolve({ id: Date.now(), ...data });
+  },
+
+  update: async (
+    id{{#if typescript}}: number{{/if}},
+    data{{#if typescript}}: Partial<Omit<{{pascalCase name}}, 'id'>>{{/if}}
+  ){{#if typescript}}: Promise<{{pascalCase name}}>{{/if}} => {
+    // TODO: implement update logic
+    return Promise.resolve({
+      id,
+      name: data.name ?? "Default Name"
+    });
+  },
+
+  delete: async (id{{#if typescript}}: number{{/if}}){{#if typescript}}: Promise<void>{{/if}} => {
+    // TODO: implement delete logic
+    return Promise.resolve();
+  }
+};
