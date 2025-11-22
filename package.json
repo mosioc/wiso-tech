@@ -7,6 +7,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,css,md}\"",
     "test": "turbo test",
+    "lint-staged": "lint-staged",
     "check-types": "turbo run check-types",
     "prepare": "husky install"
   },

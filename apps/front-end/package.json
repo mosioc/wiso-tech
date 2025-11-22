@@ -7,8 +7,7 @@
     "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint apps/front-end --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint apps/front-end --ext js,jsx,ts,tsx --fix",
+    "lint": "eslint . --max-warnings 0",
     "format": "prettier --write \"apps/front-end/**/*.{js,jsx,ts,tsx,css,html}\"",
     "check-types": "next typegen && tsc --noEmit"
   },
