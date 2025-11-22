@@ -12,22 +12,26 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x] # Use your project's Node.js version
+        node-version: [18.x]
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'pnpm' # or 'yarn' / 'pnpm'
+        cache: 'pnpm'  # This now works because pnpm will be available
 
-    - name: Install pnpm
-      run: npm install -g pnpm
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v3  # Official pnpm setup action
+      with:
+        version: 8  # or 'latest', or omit to use project's .pnpmrc
+
     - name: Install dependencies
       run: pnpm install
+
     - name: Build
       run: pnpm run build
 
@@ -37,12 +41,9 @@ jobs:
     - name: Type Check
       run: pnpm run type-check
 
-   
-
     - name: Run Tests
       run: pnpm run test
 
-    # Optional: Upload build artifacts
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
