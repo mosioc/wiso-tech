@@ -1,7 +1,6 @@
 import React from 'react';
 
 const LandingLayout = () => {
-  const a = 'saeed';
   return (
     <div>
       <h1 className="bg-amber-700">Landing Layout</h1>
