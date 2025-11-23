@@ -1,6 +1,8 @@
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import '../app/globals.css';
+import React from 'react';
 
 const lexend = localFont({
   src: [
@@ -40,7 +42,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lexend.className} font-sans`}>{children}</body>
+      <body className={`${lexend.className} font-sans`}>
+        <AppRouterCacheProvider> {children}</AppRouterCacheProvider>
+      </body>
     </html>
   );
 }
