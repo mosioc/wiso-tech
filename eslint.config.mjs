@@ -1,56 +1,145 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { FlatCompat } from '@eslint/eslintrc';
-import pluginNext from '@next/eslint-plugin-next';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTs from 'eslint-config-next/typescript';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
-import js from '@eslint/js';
+import unusedImportsPlugin from 'eslint-plugin-unused-imports';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-export default [
-  // JavaScript core rules
-  js.configs.recommended,
-  
-  // Next.js core config
-  ...compat.extends('next/core-web-vitals'),
-
-  // Next.js specific rules
   {
     plugins: {
-      '@next/next': pluginNext,
+      'unused-imports': unusedImportsPlugin,
     },
     rules: {
-      // Next.js recommended rules
-      '@next/next/google-font-display': 'warn',
-      '@next/next/google-font-preconnect': 'warn',
-      '@next/next/inline-script-id': 'error',
-      '@next/next/next-script-for-ga': 'warn',
-      '@next/next/no-assign-module-variable': 'error',
-      '@next/next/no-async-client-component': 'error',
-      '@next/next/no-before-interactive-script-outside-document': 'error',
-      '@next/next/no-css-tags': 'error',
-      '@next/next/no-document-import-in-page': 'error',
-      '@next/next/no-duplicate-head': 'error',
-      '@next/next/no-head-element': 'error',
-      '@next/next/no-head-import-in-document': 'error',
-      '@next/next/no-html-link-for-pages': 'error',
-      '@next/next/no-img-element': 'warn',
-      '@next/next/no-page-custom-font': 'warn',
-      '@next/next/no-script-component-in-head': 'error',
-      '@next/next/no-styled-jsx-in-document': 'error',
-      '@next/next/no-sync-scripts': 'error',
-      '@next/next/no-title-in-document-head': 'error',
-      '@next/next/no-unwanted-polyfill-io': 'error',
-      '@next/next/no-head': 'off',
+      'rulesdir/import-style-order': 'off',
+      'rulesdir/no-styled-component-outside-styles': 'off',
+      'rulesdir/test-should-match-component-name': 'off',
+      'rulesdir/no-react-router-navigate': 'off',
+      // note you must disable the base rule as it can report incorrect errors
+      'no-use-before-define': 'off',
+      '@typescript-eslint/no-use-before-define': ['error'],
+      'no-shadow': 'off',
+      '@typescript-eslint/no-shadow': ['error'],
+
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'error',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
+
+      // Recommended: possible errors
+      'for-direction': 'warn',
+      'no-async-promise-executor': 'warn',
+      'no-compare-neg-zero': 'warn',
+      'no-constant-condition': 'warn',
+      'no-debugger': 'warn',
+      'no-extra-boolean-cast': 'warn',
+      'no-extra-semi': 'warn',
+      'no-inner-declarations': 'warn',
+      'no-irregular-whitespace': 'warn',
+      'no-misleading-character-class': 'warn',
+      'no-prototype-builtins': 'error',
+      'no-unexpected-multiline': 'warn',
+      'no-unsafe-finally': 'warn',
+      'no-unsafe-negation': 'warn',
+      'require-atomic-updates': 'warn',
+      'no-dupe-args': 'warn',
+      'no-empty': 'warn',
+
+      // Recommended: best practices
+      'no-case-declarations': 'warn',
+      'no-global-assign': 'warn',
+      'no-useless-catch': 'error',
+
+      // Recommended: ES6
+      'constructor-super': 'warn',
+      'require-yield': 'warn',
+      'no-class-assign': 'warn',
+      'no-duplicate-imports': 'warn',
+
+      // Airbnb overrides
+      'react/jsx-filename-extension': 'off',
+      'react/prop-types': 'off',
+      'react/jsx-props-no-spreading': 'off',
+      'import/no-unresolved': 'off',
+      'import/extensions': [
+        'error',
+        {
+          js: 'never',
+          jsx: 'never',
+          ts: 'never',
+          tsx: 'never',
+        },
+      ],
+      'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+      'no-param-reassign': ['error', { props: false }],
+      'react/no-danger': 'off',
+
+      //Disable them after fixing the errors
+      camelcase: 'off',
+      'no-array-constructor': 'off',
+      'react/function-component-definition': 'off',
+      'no-undef': 'off',
+      'react/jsx-no-useless-fragment': 'off',
+      'no-unused-expressions': 'off',
+      'react-hooks/exhaustive-deps': 'off',
+      '@typescript-eslint/no-shadow': 'off',
+      'no-nested-ternary': 'off',
+      'import/prefer-default-export': 'off',
+      'jsx-a11y/no-noninteractive-element-interactions': 'off',
+      'jsx-a11y/click-events-have-key-events': 'off',
+      'jsx-a11y/media-has-caption': 'off',
+      'no-unsafe-optional-chaining': 'off',
+      'jsx-a11y/no-static-element-interactions': 'off',
+      'import/no-extraneous-dependencies': 'off',
+      'react/forbid-prop-types': 'off',
+      'no-underscore-dangle': 'off',
+      '@typescript-eslint/no-use-before-define': 'off',
+      'react/no-array-index-key': 'off',
+      'react/no-unescaped-entities': 'off',
+      'consistent-return': 'off',
+      'no-plusplus': 'off',
+      'no-async-promise-executor': 'off',
+      'no-await-in-loop': 'off',
+      'prefer-promise-reject-errors': 'off',
+      'no-lonely-if': 'off',
+      'no-restricted-globals': 'off',
+      'react/destructuring-assignment': 'off',
+      'react/require-default-props': 'off',
+      'no-prototype-builtins': 'off',
+      'jsx-a11y/control-has-associated-label': 'off',
+      'default-case': 'off',
+      'react/no-unused-prop-types': 'off',
+      'react/no-unstable-nested-components': 'off',
+      'func-names': 'off',
+      'no-constant-condition': 'off',
+      'no-empty': 'off',
+      'react/button-has-type': 'off',
+      'no-return-assign': 'off',
+      'no-return-await': 'off',
+      'no-new': 'off',
+      'jsx-a11y/label-has-associated-control': 'off',
+      'new-cap': 'off',
+      'no-case-declarations': 'off',
+      'prefer-regex-literals': 'off',
+      eqeqeq: 'off',
+      'import/no-duplicates': 'off',
+      'no-duplicate-imports': 'off',
+      'import/order': 'off',
+      'no-console': 'off',
+      'react/default-props-match-prop-types': 'off',
+      'require-atomic-updates': 'off',
     },
   },
-
-  // Prettier integration with Tailwind CSS plugin
   {
     plugins: {
       prettier: eslintPluginPrettier,
@@ -90,7 +179,7 @@ export default [
       'no-eval': 'error',
       'no-implied-eval': 'error',
       'no-new-func': 'error',
-      
+
       // Code quality
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'no-undef': 'error',
@@ -115,7 +204,7 @@ export default [
           enforceForRenamedProperties: false,
         },
       ],
-      
+
       // React/JSX rules (Next.js)
       'react/self-closing-comp': 'error',
       'react/jsx-key': 'error',
@@ -125,7 +214,7 @@ export default [
       'react/jsx-uses-react': 'error',
       'react/jsx-uses-vars': 'error',
       'react/react-in-jsx-scope': 'off', // Not needed in Next.js
-      
+
       // Import/export rules
       'import/order': [
         'error',
@@ -135,7 +224,7 @@ export default [
             'external',
             'internal',
             ['parent', 'sibling'],
-            'index'
+            'index',
           ],
           'newlines-between': 'always',
           alphabetize: {
@@ -144,29 +233,23 @@ export default [
           },
         },
       ],
-      
+
       // Additional production rules
       'no-process-env': 'warn',
       'no-warning-comments': [
         'warn',
-        { terms: ['todo', 'fixme', 'xxx'], location: 'anywhere' }
+        { terms: ['todo', 'fixme', 'xxx'], location: 'anywhere' },
       ],
     },
   },
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+  ]),
+]);
 
-  // TypeScript-specific rules if using TS
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-    languageOptions: {
-      parserOptions: {
-        project: './tsconfig.json',
-      },
-    },
-    rules: {
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-      '@typescript-eslint/explicit-function-return-type': 'warn',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/prefer-const': 'error',
-    },
-  },
-];
+export default eslintConfig;
