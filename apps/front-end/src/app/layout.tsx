@@ -1,7 +1,7 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import '../app/globals.css';
+import '../styles/globals.css';
 import React from 'react';
 
 const lexend = localFont({

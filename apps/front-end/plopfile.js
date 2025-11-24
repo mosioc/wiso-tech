@@ -1,63 +1,54 @@
-export default function (plop) {
-  plop.setGenerator('feature', {
-    description: 'Create a new project feature (CRUD, Hook, Service)',
+export default function plop(/** @type {import("plop").NodePlopAPI} */ plop) {
+  plop.setGenerator('ui', {
+    description: 'Create a new UI component',
     prompts: [
       {
-        type: 'checkbox',
-        name: 'features',
-        message: 'Select files to generate:',
-        choices: [
-          { name: 'CRUD Component', value: 'crud' },
-          { name: 'Custom Hook', value: 'hook' },
-          { name: 'Service', value: 'service' }
-        ]
+        type: 'list',
+        name: 'type',
+        message: 'Component type',
+        choices: ['atom', 'molecule', 'organism', 'view'],
       },
       {
         type: 'input',
         name: 'name',
-        message: 'What is the feature name?'
+        message: 'Component name',
       },
       {
-        type: 'confirm',
-        name: 'typescript',
-        message: 'Use TypeScript?',
-        default: true
-      }
+        type: 'input',
+        name: 'path',
+        message: 'Component path',
+        default: 'src/ui',
+      },
     ],
-    actions: function(data) {
-      const ext = data.typescript ? 'ts' : 'js';
-      const jsxExt = data.typescript ? 'tsx' : 'js';
-      const actions = [];
 
-      // CRUD Component
-      if (data.features.includes('crud')) {
-        actions.push({
-          type: 'add',
-          path: `src/components/{{pascalCase name}}.${jsxExt}`,
-          templateFile: 'plop-templates/crud-component.hbs'
-        });
-      }
+    actions: [
+      {
+        type: 'add',
+        path: '{{path}}/{{type}}s/{{pascalCase name}}/{{pascalCase name}}.tsx',
+        templateFile: './plop-templates/Component.tsx.hbs',
+      },
+      {
+        type: 'add',
+        path: '{{path}}/{{type}}s/{{pascalCase name}}/{{pascalCase name}}.stories.tsx',
+        templateFile: './plop-templates/Story.tsx.hbs',
+      },
+      {
+        type: 'append',
+        path: '{{path}}/{{type}}s/index.ts',
+        template:
+          'export { default as {{pascalCase name}} } from "./{{pascalCase name}}/{{pascalCase name}}";',
+      },
+      // Show the command to navigate
+      (answers) => {
+        const componentPath = `${answers.path}/${answers.type}s/${plop.getHelper('pascalCase')(answers.name)}`;
 
-      // Custom Hook
-      if (data.features.includes('hook')) {
-        actions.push({
-          type: 'add',
-          path: `src/hooks/use{{pascalCase name}}.${ext}`,
-          templateFile: 'plop-templates/custom-hook.hbs'
-        });
-      }
+        /* eslint-disable no-console */
+        console.log('\n✅ Component created successfully!');
+        console.log('\n📂 Navigate to your component:');
+        console.log(`\n   cd ${componentPath}\n`);
 
-      // Service
-      if (data.features.includes('service')) {
-        actions.push({
-          type: 'add',
-          path: `src/services/{{camelCase name}}Service.${ext}`,
-          templateFile: 'plop-templates/service.hbs'
-        });
-      }
-
-      // You can add more generators here (context, tests, etc.)
-      return actions;
-    }
+        return 'Done!';
+      },
+    ],
   });
-};
+}
