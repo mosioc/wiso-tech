@@ -16,6 +16,7 @@ const config = {
 
         'primary-green': '#10B981',
         'secondary-green': '#20C997',
+        'teritary-green': '#13ec80',
 
         'primary-yello': '#F59E0B',
         'secondary-yello': '#FFA500',
