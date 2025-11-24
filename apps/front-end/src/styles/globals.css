@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@config '../../tailwind.config.ts';
+
+:root {
+  --font-inter: 'Inter'; /* or whatever localFont variable you set */
+}

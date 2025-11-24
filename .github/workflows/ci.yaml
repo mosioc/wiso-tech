@@ -3,7 +3,6 @@ name: CI
 on:
   push:
     branches: ['main']
-
   pull_request:
     branches: ['main']
 
@@ -17,18 +16,23 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - name: Install pnpm
         run: npm install -g pnpm
-      - name: Install dependencies
-        run: pnpm install
+
+      - name: Install dependencies (frozen lockfile)
+        run: pnpm install --frozen-lockfile
+
       - name: Build
         run: pnpm run build
+
       - name: Lint
         run: pnpm run lint-staged
+
       - name: Test
         run: pnpm run test
-

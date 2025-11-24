@@ -133,3 +133,123 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
 - [Configuration Options](https://turborepo.com/docs/reference/configuration)
 - [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+
+```
+wiso-tech
+├─ .husky
+│  ├─ commit-msg
+│  ├─ pre-commit
+│  └─ _
+│     └─ husky.sh
+├─ .lintstagedrc.cjs
+├─ .npmrc
+├─ .prettierignore
+├─ apps
+│  ├─ back-end
+│  │  ├─ app
+│  │  │  ├─ favicon.ico
+│  │  │  ├─ globals.css
+│  │  │  ├─ layout.tsx
+│  │  │  └─ page.tsx
+│  │  ├─ eslint.config.mjs
+│  │  ├─ next-env.d.ts
+│  │  ├─ next.config.ts
+│  │  ├─ package.json
+│  │  ├─ postcss.config.mjs
+│  │  ├─ public
+│  │  │  ├─ file.svg
+│  │  │  ├─ globe.svg
+│  │  │  ├─ next.svg
+│  │  │  ├─ vercel.svg
+│  │  │  └─ window.svg
+│  │  ├─ README.md
+│  │  └─ tsconfig.json
+│  └─ front-end
+│     ├─ eslint.config.js
+│     ├─ next-env.d.ts
+│     ├─ next.config.js
+│     ├─ package.json
+│     ├─ plop-templates
+│     │  ├─ Component.tsx.hbs
+│     │  └─ Story.tsx.hbs
+│     ├─ plopfile.js
+│     ├─ postcss.config.mjs
+│     ├─ public
+│     │  ├─ file-text.svg
+│     │  ├─ fonts
+│     │  │  ├─ GeistMonoVF.woff
+│     │  │  ├─ GeistVF.woff
+│     │  │  ├─ lexend-latin-400-normal.woff
+│     │  │  ├─ lexend-latin-500-normal.woff
+│     │  │  ├─ lexend-latin-700-normal.woff
+│     │  │  └─ lexend-latin-900-normal.woff
+│     │  ├─ globe.svg
+│     │  ├─ next.svg
+│     │  ├─ turborepo-dark.svg
+│     │  ├─ turborepo-light.svg
+│     │  ├─ vercel.svg
+│     │  └─ window.svg
+│     ├─ README.md
+│     ├─ src
+│     │  ├─ app
+│     │  │  ├─ (dashboard)
+│     │  │  │  └─ dashboard
+│     │  │  │     └─ mentee
+│     │  │  │        ├─ layout.tsx
+│     │  │  │        └─ page.tsx
+│     │  │  ├─ layout.tsx
+│     │  │  └─ page.tsx
+│     │  ├─ config
+│     │  ├─ features
+│     │  │  └─ dashboard
+│     │  │     └─ mentee
+│     │  │        ├─ components
+│     │  │        ├─ hooks
+│     │  │        ├─ index.ts
+│     │  │        ├─ services
+│     │  │        ├─ store
+│     │  │        ├─ types
+│     │  │        └─ utils
+│     │  ├─ shared
+│     │  │  └─ components
+│     │  │     ├─ hooks
+│     │  │     ├─ lib
+│     │  │     ├─ store
+│     │  │     ├─ types
+│     │  │     └─ ui
+│     │  └─ styles
+│     │     └─ globals.css
+│     ├─ tailwind.config.ts
+│     └─ tsconfig.json
+├─ commitlint-formatter.cjs
+├─ commitlint.config.cjs
+├─ eslint.config.mjs
+├─ package.json
+├─ packages
+│  ├─ eslint-config
+│  │  ├─ base.js
+│  │  ├─ next.js
+│  │  ├─ package.json
+│  │  ├─ react-internal.js
+│  │  └─ README.md
+│  ├─ typescript-config
+│  │  ├─ base.json
+│  │  ├─ nextjs.json
+│  │  ├─ package.json
+│  │  └─ react-library.json
+│  └─ ui
+│     ├─ eslint.config.mjs
+│     ├─ package.json
+│     ├─ src
+│     │  ├─ button.tsx
+│     │  ├─ card.tsx
+│     │  └─ code.tsx
+│     └─ tsconfig.json
+├─ pnpm-lock.yaml
+├─ pnpm-workspace.yaml
+├─ prettier.config.cjs
+├─ README.md
+├─ tsconfig.json
+└─ turbo.json
+
+```
