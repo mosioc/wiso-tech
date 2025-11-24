@@ -1,7 +1,7 @@
 import React from 'react';
 
 const page = () => {
-  return <div>lading page</div>;
+  return <div className="text-qu">landing page</div>;
 };
 
 export default page;

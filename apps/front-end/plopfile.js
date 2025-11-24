@@ -17,7 +17,8 @@ export default function plop(/** @type {import("plop").NodePlopAPI} */ plop) {
         type: 'input',
         name: 'path',
         message: 'Component path',
-        default: 'src/ui',
+        // 👇 change default to src/app
+        default: 'src/shared/components/ui',
       },
     ],
 
@@ -38,7 +39,6 @@ export default function plop(/** @type {import("plop").NodePlopAPI} */ plop) {
         template:
           'export { default as {{pascalCase name}} } from "./{{pascalCase name}}/{{pascalCase name}}";',
       },
-      // Show the command to navigate
       (answers) => {
         const componentPath = `${answers.path}/${answers.type}s/${plop.getHelper('pascalCase')(answers.name)}`;
 
