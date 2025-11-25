@@ -1,34 +1,10 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import '../styles/globals.css';
 import React from 'react';
 
-const lexend = localFont({
-  src: [
-    {
-      path: '../public/fonts/lexend-latin-400-normal.woff',
-      weight: '400', // 👈 set font weight here
-      style: 'normal', // 👈 set style (normal/italic)
-    },
-    {
-      path: '../public/fonts/lexend-latin-500-normal.woff',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/lexend-latin-700-normal.woff',
-      weight: '700',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/lexend-latin-900-normal.woff',
-      weight: '900', // 👈 set font weight here
-      style: 'normal', // 👈 set style (normal/italic)
-    },
-  ],
-  variable: '--font-lexend',
-});
+import { lexend } from '../shared/components/lib/Font';
+import MuiThemeProvider from '../shared/components/lib/MuiThemeProvider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -43,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lexend.className} font-sans`}>
-        <AppRouterCacheProvider> {children}</AppRouterCacheProvider>
+        <AppRouterCacheProvider>
+          <MuiThemeProvider>{children}</MuiThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

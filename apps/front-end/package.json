@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write \"apps/front-end/**/*.{js,jsx,ts,tsx,css,html}\"",
-    "check-types": "next typegen && tsc --noEmit"
+    "check-types": "next typegen && tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -25,13 +27,20 @@
     "tailwindcss": "^4"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "4.1.3",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@storybook/addon-docs": "10.0.8",
+    "@storybook/addon-onboarding": "10.0.8",
+    "@storybook/nextjs": "10.0.8",
+    "@storybook/react": "^10.0.8",
     "@types/node": "^22.15.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "eslint": "^9.39.1",
+    "eslint-plugin-storybook": "10.0.8",
     "plop": "^4.0.4",
+    "storybook": "10.0.8",
     "typescript": "5.9.2"
   }
 }
