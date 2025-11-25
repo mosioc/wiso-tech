@@ -11,31 +11,13 @@ const config = {
   theme: {
     extend: {
       colors: {
-        'primary-purple': '#8B5CF6',
-        'secondary-purple': '#7C3AED',
-
-        'primary-green': '#00E676',
-        'secondary-green': '#2ECC71',
-        'teritary-green': '#13ec80',
-
-        'primary-yello': '#F59E0B',
-        'secondary-yello': '#FFA500',
-
-        'primary-white': '#F0F0F0',
-        'secondary-white': '#FFFFFF',
-        'tertiary-white': '#E4E4E7',
-        'quaternary-white': '#A0A1AC',
-
-        'primary-blue': '#1B2A38',
-        'secondary-blue': '#2C3E50',
-
-        'primary-dark': '#1E251E',
-        'secondary-dark': '#2D322D',
-        'tertiary-dark': '#1C1D22',
-
-        'primary-gray': '#888888',
-        'secondary-gray': '#5A5B64',
-        'tertiary-gray': '#666666',
+        'background-color': '#102219',
+        'secondary-background-color': '#141d1a',
+        'input-color': '#27272a',
+        'button-green-color': '#13ec80',
+        'text-green-color': '#12c66d',
+        'text-gray-color': '#85858c',
+        'text-white-color': '#ffffff',
       },
       fontFamily: {
         display: ['var(--font-lexend)', 'sans-serif'],

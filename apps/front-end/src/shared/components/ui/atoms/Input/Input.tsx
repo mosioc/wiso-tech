@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, type HTMLProps, type ReactNode } from 'react';
 
 type Props = Readonly<HTMLProps<HTMLInputElement>> & {
@@ -47,7 +48,7 @@ export default function Input({
     'focus:ring-1',
     'focus:ring-primary/20',
     'dark:border-zinc-700',
-    'dark:bg-secondary-dark',
+    'dark:bg-input-color',
     'dark:text-white',
     'dark:placeholder:text-zinc-500',
   ]

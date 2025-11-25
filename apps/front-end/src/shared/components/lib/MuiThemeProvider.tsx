@@ -1,5 +1,4 @@
 'use client';
-import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import React, { useMemo } from 'react';
@@ -12,10 +11,7 @@ const MuiThemeProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <div suppressHydrationWarning>
       <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
       </AppRouterCacheProvider>
     </div>
   );
