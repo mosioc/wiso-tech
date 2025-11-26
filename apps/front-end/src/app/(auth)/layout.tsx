@@ -10,12 +10,12 @@ const AuthLayout = ({
   return (
     <div className="bg-background-color grid pt-4">
       <div className="flex flex-col items-center">
-        <h1 className="text-xl leading-tight font-bold tracking-tight text-zinc-900 sm:text-4xl md:text-2xl dark:text-white">
+        <h1 className="text-xl leading-tight font-bold tracking-tight text-zinc-900 md:text-2xl lg:text-4xl dark:text-white">
           {isMentor
             ? 'Start your mentoring journey'
             : 'Start your learning journey'}
         </h1>
-        <p className="mt-2 text-sm text-zinc-600 lg:text-base dark:text-zinc-400">
+        <p className="mt-2 text-[11px] text-zinc-600 md:text-[12px] lg:text-base dark:text-zinc-400">
           Create an account to start your learning and mentoring journey
         </p>
       </div>

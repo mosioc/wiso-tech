@@ -1,7 +1,6 @@
+import Input from '@shared/components/ui/atoms/Input/Input';
+import Text from '@shared/components/ui/atoms/Text/Text';
 import type { HTMLProps } from 'react';
-
-import Input from '../../atoms/Input/Input';
-import Text from '../../atoms/Text/Text';
 
 interface Props extends Readonly<HTMLProps<HTMLInputElement>> {
   readonly label: string;
@@ -13,7 +12,7 @@ export default function InputWithLabel({ label, ...props }: Props) {
       <Text
         as="label"
         htmlFor={props.id}
-        className="cursor-pointer text-[14px] text-white lg:text-[16px]"
+        className="text-gray-color cursor-pointer text-[14px] lg:text-[16px]"
       >
         {label}
       </Text>

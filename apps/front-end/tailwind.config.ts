@@ -15,9 +15,8 @@ const config = {
         'secondary-background-color': '#141d1a',
         'input-color': '#27272a',
         'button-green-color': '#13ec80',
-        'text-green-color': '#12c66d',
-        'text-gray-color': '#85858c',
-        'text-white-color': '#ffffff',
+        'green-color': '#12c66d',
+        'gray-color': '#85858c',
       },
       fontFamily: {
         display: ['var(--font-lexend)', 'sans-serif'],

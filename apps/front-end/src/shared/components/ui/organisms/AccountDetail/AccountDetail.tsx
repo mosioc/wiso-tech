@@ -1,6 +1,5 @@
+import InputWithLabel from '@shared/components/ui/molecules/InputWithLabel/InputWithLabel';
 import React from 'react';
-
-import InputWithLabel from '../../molecules/InputWithLabel/InputWithLabel';
 
 export default function AccountDetail() {
   return (
