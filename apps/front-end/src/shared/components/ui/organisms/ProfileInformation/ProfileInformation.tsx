@@ -1,3 +1,6 @@
+'use client';
+
+import { useLearnerMentor } from '@features/auth/sign-up/context/LearnerMentorContextProvider';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import Avatar from '@mui/material/Avatar';
 import Button from '@shared/components/ui/atoms/Button/Button';
@@ -6,6 +9,8 @@ import ExpertiseInput from '@shared/components/ui/molecules/ExpertiseInput/Exper
 import InputWithLabel from '@shared/components/ui/molecules/InputWithLabel/InputWithLabel';
 
 export default function ProfileInformation() {
+  const { isMentor } = useLearnerMentor();
+
   return (
     <div className="flex h-full w-full flex-col px-6 pt-8">
       <Text
@@ -50,8 +55,10 @@ export default function ProfileInformation() {
       </div>
       <div className="mt-6">
         <InputWithLabel
-          id="years-of-working"
-          label="Years of Wokring in Career"
+          id={isMentor ? 'years-of-working' : 'years-of-experience'}
+          label={
+            isMentor ? 'Years of Wokring in Career' : 'Have prior Experience?'
+          }
           placeholder="e.g.,5"
         />
       </div>

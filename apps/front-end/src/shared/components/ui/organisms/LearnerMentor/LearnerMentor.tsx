@@ -1,4 +1,5 @@
 'use client';
+import { useLearnerMentor } from '@features/auth/sign-up/context/LearnerMentorContextProvider';
 import WorkIcon from '@mui/icons-material/Work';
 import Button from '@shared/components/ui/atoms/Button/Button';
 import Text from '@shared/components/ui/atoms/Text/Text';
@@ -9,7 +10,11 @@ import React, { useState } from 'react';
 type Props = Readonly<React.HTMLAttributes<HTMLDivElement>>;
 
 export default function LearnerMentor(props: Props) {
-  const [selected, setSelected] = useState<'learner' | 'mentor' | null>(null);
+  const [selected, setSelected] = useState<'learner' | 'mentor' | null>(
+    'learner'
+  );
+
+  const { setSelected: setSelectedMentorOrLearner } = useLearnerMentor();
 
   return (
     <div className="mt-6! grid px-6" {...props}>
@@ -29,7 +34,10 @@ export default function LearnerMentor(props: Props) {
             <WorkIcon fontSize="large" className="text-button-green-color" />
           }
           isSelected={selected === 'learner'}
-          onClick={() => setSelected('learner')}
+          onClick={() => {
+            setSelected('learner');
+            setSelectedMentorOrLearner('learner');
+          }}
         />
         <SignUpCard
           h2="I'm a Mentor"
@@ -38,7 +46,10 @@ export default function LearnerMentor(props: Props) {
             <WorkIcon fontSize="large" className="text-button-green-color" />
           }
           isSelected={selected === 'mentor'}
-          onClick={() => setSelected('mentor')}
+          onClick={() => {
+            setSelected('mentor');
+            setSelectedMentorOrLearner('mentor');
+          }}
         />
       </div>
       <div className="flex flex-col items-center justify-center gap-4">

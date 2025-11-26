@@ -1,4 +1,5 @@
 'use client';
+import { useLearnerMentor } from '@features/auth/sign-up/context/LearnerMentorContextProvider';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Text from '@shared/components/ui/atoms/Text/Text';
@@ -14,6 +15,7 @@ const skills = [
 
 export default function ExpertiseInput() {
   const [selectedSkills, setSelectedSkills] = React.useState<string[]>([]);
+  const { isMentor } = useLearnerMentor();
 
   return (
     <Autocomplete
@@ -34,7 +36,9 @@ export default function ExpertiseInput() {
             htmlFor="expertise-input"
             className="cursor-pointer text-[#71717b]"
           >
-            Add a skill...
+            {isMentor
+              ? 'Add skill you can mentor others in'
+              : 'Add skill you want to learn'}
           </Text>
           <TextField
             {...params}
@@ -82,8 +86,9 @@ export default function ExpertiseInput() {
           />
           {/* 👇 Helper text below the TextField */}
           <Text as="div" className="mt-1 text-sm text-[#71717b]">
-            List skills you can mentor others in. e.g., Python, Leadership, UX
-            Research
+            {isMentor
+              ? 'List skills you can mentor others in. e.g., Python, Leadership, UX Research'
+              : 'List skills you want to learn. e.g., Python, Leadership, UX'}
           </Text>
         </div>
       )}
