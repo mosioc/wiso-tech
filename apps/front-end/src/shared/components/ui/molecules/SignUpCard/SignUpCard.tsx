@@ -18,7 +18,7 @@ export default function SignUpCard(props: Props) {
     'items-center',
     'bg-input-color',
     'rounded-lg',
-    'p-8',
+    'p-6',
     'cursor-pointer',
     isSelected ? 'ring-3 ring-green-color' : null,
   ]
