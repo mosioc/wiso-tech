@@ -4,8 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-
-        hostname: process.env.NEXT_PUBLIC_GATEWAY_URL, // e.g., 'purple-monkey.mypinata.cloud'
+        hostname: 'purple-monkey.mypinata.cloud', // literal string required
         port: '',
         pathname: '/ipfs/**',
       },

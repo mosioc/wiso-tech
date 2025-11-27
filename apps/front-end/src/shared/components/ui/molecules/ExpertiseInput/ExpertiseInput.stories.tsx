@@ -8,9 +8,7 @@ const meta: Meta<typeof ExpertiseInput> = {
 };
 
 export const Primary: StoryObj<typeof ExpertiseInput> = {
-  args: {
-    children: 'Hello from Storybook',
-  },
+  args: {},
 };
 
 export default meta;
