@@ -9,7 +9,14 @@ export default function Button({
   variant = 'regular',
   ...props
 }: Props) {
-  const classNames = [className, 'rounded-lg', 'p-2', 'text-sm', 'px-4'];
+  const classNames = [
+    className,
+    'rounded-lg',
+    'p-2',
+    'text-sm',
+    'px-4',
+    'cursor-pointer',
+  ];
 
   switch (variant) {
     case 'secondary':

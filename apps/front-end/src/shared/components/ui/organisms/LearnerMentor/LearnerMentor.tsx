@@ -1,23 +1,36 @@
 'use client';
 import { useLearnerMentor } from '@features/auth/sign-up/context/LearnerMentorContextProvider';
 import WorkIcon from '@mui/icons-material/Work';
+import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@shared/components/ui/atoms/Button/Button';
 import Text from '@shared/components/ui/atoms/Text/Text';
 import SignUpCard from '@shared/components/ui/molecules/SignUpCard/SignUpCard';
+import { useFormikContext } from 'formik';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-type Props = Readonly<React.HTMLAttributes<HTMLDivElement>>;
+type Props = Readonly<React.HTMLAttributes<HTMLDivElement>> & {
+  isSubmitting?: boolean;
+};
 
 export default function LearnerMentor(props: Props) {
   const [selected, setSelected] = useState<'learner' | 'mentor' | null>(
     'learner'
   );
 
+  const { isSubmitting, ...rest } = props;
+
   const { setSelected: setSelectedMentorOrLearner } = useLearnerMentor();
 
+  const { setFieldValue } = useFormikContext();
+
+  // 3. Set the default value when the component mounts
+  useEffect(() => {
+    setFieldValue('userType', 'learner');
+  }, [setFieldValue]);
+
   return (
-    <div className="mt-6! grid px-6" {...props}>
+    <div className="mt-6! grid px-6" {...rest}>
       <div className="flex justify-start">
         <Text
           as="h2"
@@ -37,6 +50,7 @@ export default function LearnerMentor(props: Props) {
           onClick={() => {
             setSelected('learner');
             setSelectedMentorOrLearner('learner');
+            setFieldValue('userType', 'learner');
           }}
         />
         <SignUpCard
@@ -49,12 +63,19 @@ export default function LearnerMentor(props: Props) {
           onClick={() => {
             setSelected('mentor');
             setSelectedMentorOrLearner('mentor');
+            setFieldValue('userType', 'mentor');
           }}
         />
       </div>
       <div className="flex flex-col items-center justify-center gap-4">
-        <Button variant="regular" className="mt-8! w-full p-3">
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          variant="regular"
+          className="mt-8 flex w-full items-center justify-center gap-2 p-3"
+        >
           Create Account
+          {isSubmitting && <CircularProgress size={16} color="inherit" />}
         </Button>
         <Text
           as="h2"
@@ -65,7 +86,7 @@ export default function LearnerMentor(props: Props) {
             as="span" // ✅ use span instead of p
             className="text-button-green-color cursor-pointer text-center text-[12px] hover:underline md:text-sm"
           >
-            you agree to our
+            you agree to our term.
           </Text>
         </Text>
 

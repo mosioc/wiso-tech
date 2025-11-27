@@ -8,7 +8,7 @@ export default function Devider(props: Props) {
   const classNames = [
     className,
     'mt-4',
-    'w-[92%]',
+    'mx-6',
     'border',
     'dark:border-zinc-800',
   ].join(' ');
