@@ -28,9 +28,6 @@ jobs:
       - name: Install dependencies (frozen lockfile)
         run: pnpm install --frozen-lockfile
 
-      - name: Generate Prisma
-        run: npx prisma generate
-
       - name: Build
         run: pnpm run build
 
