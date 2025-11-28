@@ -10,9 +10,12 @@ jobs:
   build:
     name: Build and Test
     runs-on: ubuntu-latest
+    # Keep the global env vars if needed for other tools
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      # We still declare it here for safety
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -27,6 +30,13 @@ jobs:
 
       - name: Install dependencies (frozen lockfile)
         run: pnpm install --frozen-lockfile
+
+      # 👇 ADD THIS STEP 👇
+      # This manually creates the .env file in the backend folder.
+      # Prisma will read this file 100% of the time.
+      - name: Create Backend .env
+        run: |
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > apps/back-end/.env
 
       - name: Build
         run: pnpm run build

@@ -1,4 +1,5 @@
 'use client';
+import FormikError from '@shared/components/ui/atoms/FormikError/FormikError';
 import InputWithLabel from '@shared/components/ui/molecules/InputWithLabel/InputWithLabel';
 import { useField } from 'formik';
 import React from 'react';
@@ -21,11 +22,7 @@ export default function AccountDetail() {
             label="Username"
             placeholder="Enter a unique username"
           />
-          {usernameMeta.touched && usernameMeta.error && (
-            <div className="mt-1 text-sm text-red-500">
-              {usernameMeta.error}
-            </div>
-          )}
+          <FormikError field={usernameMeta} />
         </div>
 
         <div className="col-span-12 md:col-span-6">
@@ -35,9 +32,7 @@ export default function AccountDetail() {
             label="Email Address"
             placeholder="you@example.com"
           />
-          {emailMeta.touched && emailMeta.error && (
-            <div className="mt-1 text-sm text-red-500">{emailMeta.error}</div>
-          )}
+          <FormikError field={emailMeta} />
         </div>
 
         <div className="col-span-12">
@@ -48,11 +43,7 @@ export default function AccountDetail() {
             type="password"
             placeholder="Enter a strong password"
           />
-          {passwordMeta.touched && passwordMeta.error && (
-            <div className="mt-1 text-sm text-red-500">
-              {passwordMeta.error}
-            </div>
-          )}
+          <FormikError field={passwordMeta} />
         </div>
       </div>
     </div>

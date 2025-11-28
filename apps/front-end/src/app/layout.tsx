@@ -1,4 +1,5 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import QueryProvider from '@shared/components/providers/QueryProvider';
 import type { Metadata } from 'next';
 import '../styles/globals.css';
 import React from 'react';
@@ -20,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lexend.className} font-sans`}>
         <AppRouterCacheProvider>
-          <MuiThemeProvider>{children}</MuiThemeProvider>
+          <MuiThemeProvider>
+            <QueryProvider>{children}</QueryProvider>
+          </MuiThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

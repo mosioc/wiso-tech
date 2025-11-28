@@ -39,7 +39,8 @@ export default function LearnerMentor(props: Props) {
           How will you be using the platform?
         </Text>
       </div>
-      <div className="flex items-center justify-start gap-4 pt-4">
+
+      <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2">
         <SignUpCard
           h2="I'm a Learner"
           p="Ready to learn new skills and grow my knowledge."
@@ -79,12 +80,12 @@ export default function LearnerMentor(props: Props) {
         </Button>
         <Text
           as="h2"
-          className="text-center text-[12px] text-zinc-500 md:text-sm dark:text-zinc-400"
+          className="text-center text-[11px] text-zinc-500 md:text-[13px] dark:text-zinc-400"
         >
           By creating an account,{' '}
           <Text
-            as="span" // ✅ use span instead of p
-            className="text-button-green-color cursor-pointer text-center text-[12px] hover:underline md:text-sm"
+            as="span"
+            className="text-button-green-color cursor-pointer text-center text-[11px] hover:underline md:text-[13px]"
           >
             you agree to our term.
           </Text>
@@ -92,11 +93,11 @@ export default function LearnerMentor(props: Props) {
 
         <Text
           as="p"
-          className="text-center text-[12px] text-zinc-600 md:text-sm dark:text-zinc-400"
+          className="text-center text-[11px] text-zinc-600 md:text-[13px] dark:text-zinc-400"
         >
           Already have an account?
           <Link
-            className="text-button-green-color mx-1! text-[12px] hover:underline md:text-sm"
+            className="text-button-green-color mx-1! text-[11px] hover:underline md:text-[13px]"
             href="#"
           >
             Log in

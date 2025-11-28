@@ -4,6 +4,7 @@ import { useLearnerMentor } from '@features/auth/sign-up/context/LearnerMentorCo
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import Avatar from '@mui/material/Avatar';
 import Button from '@shared/components/ui/atoms/Button/Button';
+import FormikError from '@shared/components/ui/atoms/FormikError/FormikError';
 import Text from '@shared/components/ui/atoms/Text/Text';
 import ExpertiseInput from '@shared/components/ui/molecules/ExpertiseInput/ExpertiseInput';
 import InputWithLabel from '@shared/components/ui/molecules/InputWithLabel/InputWithLabel';
@@ -116,10 +117,8 @@ export default function ProfileInformation() {
               onChange={handleFileChange}
               className="hidden"
             />
-            {/* Error message for photo */}
-            {photoMeta.touched && photoMeta.error && (
-              <div className="mt-1 text-sm text-red-500">{photoMeta.error}</div>
-            )}
+
+            <FormikError field={photoMeta} />
           </div>
         </div>
       </div>
@@ -136,9 +135,7 @@ export default function ProfileInformation() {
           {...yearsField}
           value={yearsField.value || ''}
         />
-        {yearsMeta.touched && yearsMeta.error && (
-          <div className="mt-1 text-sm text-red-500">{yearsMeta.error}</div>
-        )}
+        <FormikError field={yearsMeta} />
       </div>
 
       {/* Expertise Input */}
@@ -147,13 +144,7 @@ export default function ProfileInformation() {
           value={expertiseField.value}
           onChange={(value) => setFieldValue('expertise', value)}
         />
-        {expertiseMeta.touched && expertiseMeta.error && (
-          <div className="mt-1 text-sm text-red-500">
-            {typeof expertiseMeta.error === 'string'
-              ? expertiseMeta.error
-              : 'Invalid expertise'}
-          </div>
-        )}
+        <FormikError field={expertiseMeta} />
       </div>
     </div>
   );
