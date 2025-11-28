@@ -15,6 +15,7 @@ generator pothos {
   // This helps Pothos know about your Prisma types automatically
 }
 
+
 enum UserType {
   MENTOR
   LEARNER
