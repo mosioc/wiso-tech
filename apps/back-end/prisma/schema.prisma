@@ -1,0 +1,33 @@
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+
+}
+
+generator client {
+  provider = "prisma-client-js" // <--- Change this back
+
+}
+
+generator pothos {
+  provider = "prisma-pothos-types"
+  // This helps Pothos know about your Prisma types automatically
+}
+
+enum UserType {
+  MENTOR
+  LEARNER
+}
+
+model User {
+  id                Int       @id @default(autoincrement())
+  email             String    @unique
+  username          String
+  password          String
+  yearsOfExperience Int
+  expertise         String[]
+  profilePhoto      String
+  userType          UserType  // 👈 enum field
+  createdAt         DateTime  @default(now())
+}

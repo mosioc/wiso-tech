@@ -39,13 +39,7 @@ export default function LearnerMentor(props: Props) {
           How will you be using the platform?
         </Text>
       </div>
-      {/* 
-        UPDATED SECTION:
-        1. Changed to 'grid'.
-        2. 'grid-cols-1' stacks them on mobile.
-        3. 'md:grid-cols-2' creates 2 equal columns on desktop.
-        4. Grid items stretch to the same height by default.
-      */}
+
       <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2">
         <SignUpCard
           h2="I'm a Learner"
@@ -86,12 +80,12 @@ export default function LearnerMentor(props: Props) {
         </Button>
         <Text
           as="h2"
-          className="text-center text-[11px] text-zinc-500 md:text-[12px] dark:text-zinc-400"
+          className="text-center text-[11px] text-zinc-500 md:text-[13px] dark:text-zinc-400"
         >
           By creating an account,{' '}
           <Text
             as="span"
-            className="text-button-green-color cursor-pointer text-center text-[11px] hover:underline md:text-[12px]"
+            className="text-button-green-color cursor-pointer text-center text-[11px] hover:underline md:text-[13px]"
           >
             you agree to our term.
           </Text>
@@ -99,11 +93,11 @@ export default function LearnerMentor(props: Props) {
 
         <Text
           as="p"
-          className="text-center text-[11px] text-zinc-600 md:text-[12px] dark:text-zinc-400"
+          className="text-center text-[11px] text-zinc-600 md:text-[13px] dark:text-zinc-400"
         >
           Already have an account?
           <Link
-            className="text-button-green-color mx-1! text-[11px] hover:underline md:text-[12px]"
+            className="text-button-green-color mx-1! text-[11px] hover:underline md:text-[13px]"
             href="#"
           >
             Log in
