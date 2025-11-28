@@ -29,7 +29,9 @@ export default function UserList() {
 
   return (
     <div className="p-4">
-      <h2 className="mb-4 text-xl font-bold">Users</h2>
+      <h2 className="mb-4 text-xl font-bold">
+        Users List (React Query and GraphQL)
+      </h2>
     </div>
   );
 }
