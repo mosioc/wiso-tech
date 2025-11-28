@@ -1,6 +1,7 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
+  "globalEnv": ["PINATA_SECRET_JWT"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

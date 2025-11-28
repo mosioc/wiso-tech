@@ -8,16 +8,16 @@ export const muiCreateTheme = (): Theme => {
     palette: {
       primary: {
         light: '#13ec80', // pink-2
-        main: '#20C997', // pink-1
-        dark: '#13ec80', // pink-3
+        main: '#12c66d', // pink-1
+        dark: 'rgba(12, 170, 91, 1)',
       },
       background: {
-        default: '#131419', // black-1
+        default: '#141d1a', // black-1
         paper: '#1C1D22', // pink-3
       },
       text: {
         primary: '#F7F8FC', // white-1
-        secondary: '#FFFFFF', // white-2
+        secondary: '#85858c', // white-2
       },
     },
   });

@@ -1,11 +1,7 @@
-import type { HTMLAttributes } from "react";
+import React from 'react';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {}
+type Props = Readonly<React.HTMLAttributes<HTMLDivElement>>;
 
 export default function {{pascalCase name}}(props: Props) {
-    return (
-    <div
-      {...props}
-    />
-    );
+  return <div {...props} />;
 }
