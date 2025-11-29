@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     // 2. Return the full URL to the client
     return NextResponse.json(url, { status: 200 });
   } catch (error) {
-    // eslint-disable-next-line no-console
+    /* eslint-disable no-console */
     console.error('Error uploading file to Pinata:', error);
     return NextResponse.json(
       { error: 'Internal server error' },

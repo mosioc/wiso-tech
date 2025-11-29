@@ -1,18 +1,36 @@
-import type { CodegenConfig } from '@graphql-codegen/cli';
+import * as fs from 'fs'; // Import the file system module
+
+import { getBaseConfig, type CodegenConfig } from '@repo/graphql-config';
 
 const config: CodegenConfig = {
-  overwrite: true,
-  // Point to your running local server
+  ...getBaseConfig(),
   schema: 'http://localhost:3001/api/graphql',
-  // Look for queries in all ts/tsx files
   documents: ['src/**/*.{ts,tsx}'],
-  ignoreNoDocuments: true,
   generates: {
     './src/gql/': {
-      preset: 'client', // This is the modern, magic preset
+      preset: 'client',
       presetConfig: {
         gqlTagName: 'gql',
       },
+    },
+  },
+  hooks: {
+    // The function must return void, not a string
+    afterOneFileWrite: (filePath: string) => {
+      // Check if this is the specific file we want to modify
+      if (filePath.endsWith('fragment-masking.ts')) {
+        // 1. Read the generated file
+        const content = fs.readFileSync(filePath, 'utf-8');
+
+        // 2. Replace the import path
+        const newContent = content.replace(
+          "from 'graphql'",
+          "from '@repo/graphql-config'"
+        );
+
+        // 3. Write the changes back to disk
+        fs.writeFileSync(filePath, newContent);
+      }
     },
   },
 };
