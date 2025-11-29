@@ -4,7 +4,7 @@ import {
   DocumentTypeDecoration,
   TypedDocumentNode,
 } from '@graphql-typed-document-node/core';
-import { FragmentDefinitionNode } from 'graphql';
+import { FragmentDefinitionNode } from '@repo/graphql-config';
 import { Incremental } from './graphql';
 
 export type FragmentType<
