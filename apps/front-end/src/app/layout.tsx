@@ -1,11 +1,11 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import QueryProvider from '@shared/components/providers/QueryProvider';
+import { lexend } from '@shared/utils/Font';
+import MuiThemeProvider from '@shared/utils/MuiThemeProvider';
 import type { Metadata } from 'next';
-import '../styles/globals.css';
 import React from 'react';
 
-import { lexend } from '../shared/components/lib/Font';
-import MuiThemeProvider from '../shared/components/lib/MuiThemeProvider';
+import QueryProvider from '@/shared/providers/QueryProvider';
+import '../styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',

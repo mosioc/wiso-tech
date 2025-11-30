@@ -1,5 +1,5 @@
 // app/api/upload/route.ts
-import { pinata } from '@shared/components/lib/PianataConfig';
+import { pinata } from '@shared/utils/PianataConfig';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {

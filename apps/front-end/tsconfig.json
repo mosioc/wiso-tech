@@ -4,8 +4,10 @@
     "plugins": [{ "name": "next" }],
     "baseUrl": ".",
     "paths": {
+      "@src/*": ["src/*"],
       "@app/*": ["src/app/*"],
       "@/*": ["./src/*"],
+      "@lib/*": ["src/lib/*"],
       "@config/*": ["src/config/*"],
       "@features/*": ["src/features/*"],
       "@shared/*": ["src/shared/*"],
