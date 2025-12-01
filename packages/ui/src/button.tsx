@@ -1,6 +1,6 @@
-"use client";
-
-import { ReactNode } from "react";
+'use client';
+/* eslint-disable no-alert */
+import { ReactNode } from 'react';
 
 interface ButtonProps {
   children: ReactNode;

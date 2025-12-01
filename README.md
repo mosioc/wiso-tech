@@ -1,139 +1,3 @@
-# Turborepo starter
-
-This Turborepo starter is maintained by the Turborepo core team.
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
-```
-
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
-
 ```
 wiso-tech
 ├─ .husky
@@ -147,6 +11,9 @@ wiso-tech
 ├─ apps
 │  ├─ back-end
 │  │  ├─ app
+│  │  │  ├─ api
+│  │  │  │  └─ graphql
+│  │  │  │     └─ route.ts
 │  │  │  ├─ favicon.ico
 │  │  │  ├─ globals.css
 │  │  │  ├─ layout.tsx
@@ -165,6 +32,9 @@ wiso-tech
 │  │  ├─ README.md
 │  │  └─ tsconfig.json
 │  └─ front-end
+│     ├─ .storybook
+│     │  ├─ main.ts
+│     │  └─ preview.ts
 │     ├─ eslint.config.js
 │     ├─ next-env.d.ts
 │     ├─ next.config.js
@@ -174,33 +44,40 @@ wiso-tech
 │     │  └─ Story.tsx.hbs
 │     ├─ plopfile.js
 │     ├─ postcss.config.mjs
-│     ├─ public
-│     │  ├─ file-text.svg
-│     │  ├─ fonts
-│     │  │  ├─ GeistMonoVF.woff
-│     │  │  ├─ GeistVF.woff
-│     │  │  ├─ lexend-latin-400-normal.woff
-│     │  │  ├─ lexend-latin-500-normal.woff
-│     │  │  ├─ lexend-latin-700-normal.woff
-│     │  │  └─ lexend-latin-900-normal.woff
-│     │  ├─ globe.svg
-│     │  ├─ next.svg
-│     │  ├─ turborepo-dark.svg
-│     │  ├─ turborepo-light.svg
-│     │  ├─ vercel.svg
-│     │  └─ window.svg
 │     ├─ README.md
 │     ├─ src
 │     │  ├─ app
+│     │  │  ├─ (auth)
+│     │  │  │  ├─ layout.tsx
+│     │  │  │  ├─ sign-in
+│     │  │  │  │  └─ page.tsx
+│     │  │  │  └─ sign-up
+│     │  │  │     └─ page.tsx
 │     │  │  ├─ (dashboard)
 │     │  │  │  └─ dashboard
 │     │  │  │     └─ mentee
 │     │  │  │        ├─ layout.tsx
 │     │  │  │        └─ page.tsx
-│     │  │  ├─ layout.tsx
-│     │  │  └─ page.tsx
+│     │  │  ├─ api
+│     │  │  │  └─ upload
+│     │  │  │     └─ route.ts
+│     │  │  └─ layout.tsx
 │     │  ├─ config
 │     │  ├─ features
+│     │  │  ├─ auth
+│     │  │  │  └─ sign-up
+│     │  │  │     ├─ components
+│     │  │  │     │  └─ SignUpForm.tsx
+│     │  │  │     ├─ context
+│     │  │  │     │  └─ LearnerMentorContextProvider.tsx
+│     │  │  │     ├─ hooks
+│     │  │  │     │  └─ useSignUpForm.ts
+│     │  │  │     ├─ index.ts
+│     │  │  │     ├─ services
+│     │  │  │     ├─ store
+│     │  │  │     ├─ types
+│     │  │  │     │  └─ index.ts
+│     │  │  │     └─ utils
 │     │  │  └─ dashboard
 │     │  │     └─ mentee
 │     │  │        ├─ components
@@ -210,15 +87,78 @@ wiso-tech
 │     │  │        ├─ store
 │     │  │        ├─ types
 │     │  │        └─ utils
+│     │  ├─ public
+│     │  │  ├─ file-text.svg
+│     │  │  ├─ fonts
+│     │  │  │  ├─ GeistMonoVF.woff
+│     │  │  │  ├─ GeistVF.woff
+│     │  │  │  ├─ lexend-latin-400-normal.woff
+│     │  │  │  ├─ lexend-latin-500-normal.woff
+│     │  │  │  ├─ lexend-latin-700-normal.woff
+│     │  │  │  └─ lexend-latin-900-normal.woff
+│     │  │  ├─ globe.svg
+│     │  │  ├─ next.svg
+│     │  │  ├─ turborepo-dark.svg
+│     │  │  ├─ turborepo-light.svg
+│     │  │  ├─ vercel.svg
+│     │  │  └─ window.svg
 │     │  ├─ shared
-│     │  │  └─ components
-│     │  │     ├─ hooks
-│     │  │     ├─ lib
-│     │  │     ├─ store
-│     │  │     ├─ types
-│     │  │     └─ ui
-│     │  └─ styles
-│     │     └─ globals.css
+│     │  │  ├─ components
+│     │  │  │  ├─ feedback
+│     │  │  │  ├─ forms
+│     │  │  │  ├─ layouts
+│     │  │  │  └─ ui
+│     │  │  │     ├─ atoms
+│     │  │  │     │  ├─ Button
+│     │  │  │     │  │  ├─ Button.stories.tsx
+│     │  │  │     │  │  └─ Button.tsx
+│     │  │  │     │  ├─ Devider
+│     │  │  │     │  │  ├─ Devider.stories.tsx
+│     │  │  │     │  │  └─ Devider.tsx
+│     │  │  │     │  ├─ FormikError
+│     │  │  │     │  │  ├─ FormikError.stories.tsx
+│     │  │  │     │  │  └─ FormikError.tsx
+│     │  │  │     │  ├─ Input
+│     │  │  │     │  │  ├─ Input.stories.tsx
+│     │  │  │     │  │  └─ Input.tsx
+│     │  │  │     │  └─ Text
+│     │  │  │     │     ├─ Text.stories.tsx
+│     │  │  │     │     └─ Text.tsx
+│     │  │  │     ├─ molecules
+│     │  │  │     │  ├─ ExpertiseInput
+│     │  │  │     │  │  ├─ ExpertiseInput.stories.tsx
+│     │  │  │     │  │  └─ ExpertiseInput.tsx
+│     │  │  │     │  ├─ InputWithLabel
+│     │  │  │     │  │  ├─ InputWithLabel.stories.tsx
+│     │  │  │     │  │  └─ InputWithLabel.tsx
+│     │  │  │     │  └─ SignUpCard
+│     │  │  │     │     ├─ SignUpCard.stories.tsx
+│     │  │  │     │     └─ SignUpCard.tsx
+│     │  │  │     └─ organisms
+│     │  │  │        ├─ AccountDetail
+│     │  │  │        │  ├─ AccountDetail.stories.tsx
+│     │  │  │        │  └─ AccountDetail.tsx
+│     │  │  │        ├─ LearnerMentor
+│     │  │  │        │  ├─ LearnerMentor.stories.tsx
+│     │  │  │        │  └─ LearnerMentor.tsx
+│     │  │  │        └─ ProfileInformation
+│     │  │  │           ├─ ProfileInformation.stories.tsx
+│     │  │  │           └─ ProfileInformation.tsx
+│     │  │  ├─ config
+│     │  │  ├─ constants
+│     │  │  ├─ hooks
+│     │  │  ├─ providers
+│     │  │  │  └─ QueryProvider.tsx
+│     │  │  ├─ types
+│     │  │  └─ utils
+│     │  │     ├─ Font.tsx
+│     │  │     ├─ MuiTheme.ts
+│     │  │     ├─ MuiThemeProvider.tsx
+│     │  │     └─ PianataConfig.ts
+│     │  ├─ store
+│     │  ├─ styles
+│     │  │  └─ globals.css
+│     │  └─ types
 │     ├─ tailwind.config.ts
 │     └─ tsconfig.json
 ├─ commitlint-formatter.cjs
@@ -232,6 +172,36 @@ wiso-tech
 │  │  ├─ package.json
 │  │  ├─ react-internal.js
 │  │  └─ README.md
+│  ├─ graphql
+│  │  ├─ back-graphql
+│  │  │  ├─ codegen.ts
+│  │  │  └─ graphql
+│  │  │     ├─ schema.ts
+│  │  │     └─ types
+│  │  │        └─ User.ts
+│  │  ├─ client.ts
+│  │  ├─ codegen.ts
+│  │  ├─ gql
+│  │  │  ├─ auth.graphql
+│  │  │  └─ generated.ts
+│  │  ├─ lib
+│  │  │  └─ graphql-client.ts
+│  │  ├─ package.json
+│  │  ├─ scripts
+│  │  │  └─ generate-schema.ts
+│  │  ├─ server.ts
+│  │  └─ tsconfig.json
+│  ├─ prisma-config
+│  │  ├─ index.ts
+│  │  ├─ package.json
+│  │  ├─ prisma
+│  │  │  ├─ migrations
+│  │  │  │  ├─ 20251201051321_test
+│  │  │  │  │  └─ migration.sql
+│  │  │  │  └─ migration_lock.toml
+│  │  │  ├─ prisma.config.ts
+│  │  │  └─ schema.prisma
+│  │  └─ prisma.ts
 │  ├─ typescript-config
 │  │  ├─ base.json
 │  │  ├─ nextjs.json
@@ -248,7 +218,6 @@ wiso-tech
 ├─ pnpm-lock.yaml
 ├─ pnpm-workspace.yaml
 ├─ prettier.config.cjs
-├─ README.md
 ├─ tsconfig.json
 └─ turbo.json
 

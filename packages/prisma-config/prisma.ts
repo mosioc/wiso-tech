@@ -1,4 +1,4 @@
-// src/lib/prisma.ts
+// packages/prisma-config/src/lib/prisma.ts
 import { PrismaClient } from '@prisma/client';
 
 const prismaClientSingleton = () => {
@@ -13,6 +13,8 @@ const globalForPrisma = globalThis as unknown as {
 
 export const prisma = globalForPrisma.prisma ?? prismaClientSingleton();
 
+// Fix: Disable the 'no-process-env' rule for this line
+// eslint-disable-next-line no-process-env
 if (process.env.NODE_ENV !== 'production') {
   globalForPrisma.prisma = prisma;
 }

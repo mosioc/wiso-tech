@@ -39,7 +39,7 @@ jobs:
           echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > apps/back-end/.env
 
       - name: Build
-        run: pnpm run build
+        run: pnpm run build:ordered
 
       - name: Lint
         run: pnpm run lint-staged
