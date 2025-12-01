@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "exports": {
+    ".": "./prisma.ts",
     "./index": "./index.ts"
   },
   "scripts": {
