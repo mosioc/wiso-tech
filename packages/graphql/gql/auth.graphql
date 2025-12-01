@@ -1,3 +1,4 @@
+# src/gql/auth.graphql
 # Use the Input Object pattern
 mutation Signup($input: SignupInput!) {
   # Note: passing $input object, not 7 separate variables
@@ -11,6 +12,7 @@ mutation Signup($input: SignupInput!) {
 
 # In the backend, we renamed 'me' to 'users' because it returned a list
 # Use a semantic name for the operation
+
 query GetUsers {
   users {
     id

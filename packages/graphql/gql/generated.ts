@@ -8,7 +8,7 @@ import {
   UseInfiniteQueryOptions,
   InfiniteData,
 } from '@tanstack/react-query';
-import { fetcher } from '@/lib/graphql-client';
+import { fetcher } from '../lib/graphql-client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {

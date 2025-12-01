@@ -1,4 +1,5 @@
 /* eslint-disable */
+// src/shared/utils/graphql-client.ts
 import { GraphQLClient } from 'graphql-request';
 
 // Create a single client instance

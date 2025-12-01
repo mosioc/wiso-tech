@@ -39,12 +39,12 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "4.1.3",
+    "@repo/graphql": "workspace:*",
     "@graphql-codegen/cli": "^6.1.0",
     "@graphql-codegen/typescript": "^5.0.5",
     "@graphql-codegen/typescript-operations": "^5.0.6",
     "@graphql-codegen/typescript-react-query": "^6.1.1",
     "@repo/eslint-config": "workspace:*",
-    "@repo/graphql-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@storybook/addon-docs": "10.0.8",
     "@storybook/addon-onboarding": "10.0.8",

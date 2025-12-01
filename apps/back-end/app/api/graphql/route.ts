@@ -1,7 +1,6 @@
+import { schema } from '@repo/graphql/server';
 import { createYoga } from 'graphql-yoga';
 import { NextRequest } from 'next/server';
-
-import { schema } from '@/graphql/schema';
 
 // 1. Create Yoga Instance
 const yoga = createYoga({
