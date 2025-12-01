@@ -10,6 +10,7 @@
     "lint-staged": "lint-staged",
     "check-types": "turbo run check-types",
     "prepare": "husky install",
+    "postinstall": "turbo run build --filter=@repo/prisma-config",
     "build:ordered": "pnpm build:prisma && pnpm build:gql && pnpm build:ui && pnpm build:apps",
     "build:prisma": "turbo build --filter=@repo/prisma-config",
     "build:gql": "turbo build --filter=@repo/graphql",
