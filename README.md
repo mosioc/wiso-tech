@@ -19,12 +19,10 @@ wiso-tech
 │  │  │  ├─ layout.tsx
 │  │  │  └─ page.tsx
 │  │  ├─ eslint.config.mjs
-│  │  ├─ lib
 │  │  ├─ next-env.d.ts
 │  │  ├─ next.config.ts
 │  │  ├─ package.json
 │  │  ├─ postcss.config.mjs
-│  │  ├─ prisma.config.ts
 │  │  ├─ public
 │  │  │  ├─ file.svg
 │  │  │  ├─ globe.svg
@@ -89,7 +87,6 @@ wiso-tech
 │     │  │        ├─ store
 │     │  │        ├─ types
 │     │  │        └─ utils
-│     │  ├─ lib
 │     │  ├─ public
 │     │  │  ├─ file-text.svg
 │     │  │  ├─ fonts
@@ -182,15 +179,17 @@ wiso-tech
 │  │  │     ├─ schema.ts
 │  │  │     └─ types
 │  │  │        └─ User.ts
+│  │  ├─ client.ts
 │  │  ├─ codegen.ts
-│  │  ├─ front-graphql
 │  │  ├─ gql
 │  │  │  ├─ auth.graphql
 │  │  │  └─ generated.ts
-│  │  ├─ index.ts
 │  │  ├─ lib
 │  │  │  └─ graphql-client.ts
 │  │  ├─ package.json
+│  │  ├─ scripts
+│  │  │  └─ generate-schema.ts
+│  │  ├─ server.ts
 │  │  └─ tsconfig.json
 │  ├─ prisma-config
 │  │  ├─ index.ts
