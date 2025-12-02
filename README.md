@@ -18,7 +18,6 @@ A modern full-stack mentorship platform built with a monorepo architecture, enab
 - [Code Quality](#code-quality)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 
