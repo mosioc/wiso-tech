@@ -3,23 +3,9 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
-type Mutation {
-  signup(input: SignupInput!): User
-}
-
 type Query {
   ok: Boolean
   users: [User!]
-}
-
-input SignupInput {
-  email: String!
-  expertise: [String!]!
-  password: String!
-  profilePhoto: String!
-  userType: UserType!
-  username: String!
-  yearsOfExperience: Int!
 }
 
 type User {

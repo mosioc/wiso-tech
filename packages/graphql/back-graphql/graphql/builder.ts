@@ -30,7 +30,3 @@ builder.queryType({
     ok: t.boolean({ resolve: () => true }),
   }),
 });
-
-builder.mutationType({
-  fields: (_t) => ({}),
-});
