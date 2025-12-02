@@ -1,17 +1,4 @@
 # src/gql/auth.graphql
-# Use the Input Object pattern
-mutation Signup($input: SignupInput!) {
-  # Note: passing $input object, not 7 separate variables
-  signup(input: $input) {
-    id
-    email
-    username
-    userType 
-  }
-}
-
-# In the backend, we renamed 'me' to 'users' because it returned a list
-# Use a semantic name for the operation
 
 query GetUsers {
   users {

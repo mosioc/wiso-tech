@@ -1,9 +1,8 @@
 /* eslint-disable */
+
 import {
-  useMutation,
   useQuery,
   useInfiniteQuery,
-  UseMutationOptions,
   UseQueryOptions,
   UseInfiniteQueryOptions,
   InfiniteData,
@@ -40,29 +39,10 @@ export type Scalars = {
   DateTime: { input: any; output: any };
 };
 
-export type Mutation = {
-  __typename?: 'Mutation';
-  signup?: Maybe<User>;
-};
-
-export type MutationSignupArgs = {
-  input: SignupInput;
-};
-
 export type Query = {
   __typename?: 'Query';
   ok?: Maybe<Scalars['Boolean']['output']>;
   users?: Maybe<Array<User>>;
-};
-
-export type SignupInput = {
-  email: Scalars['String']['input'];
-  expertise: Array<Scalars['String']['input']>;
-  password: Scalars['String']['input'];
-  profilePhoto: Scalars['String']['input'];
-  userType: UserType;
-  username: Scalars['String']['input'];
-  yearsOfExperience: Scalars['Int']['input'];
 };
 
 export type User = {
@@ -82,21 +62,6 @@ export enum UserType {
   Mentor = 'MENTOR',
 }
 
-export type SignupMutationVariables = Exact<{
-  input: SignupInput;
-}>;
-
-export type SignupMutation = {
-  __typename?: 'Mutation';
-  signup?: {
-    __typename?: 'User';
-    id?: string | null;
-    email?: string | null;
-    username?: string | null;
-    userType?: UserType | null;
-  } | null;
-};
-
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = {
@@ -110,48 +75,6 @@ export type GetUsersQuery = {
     profilePhoto?: string | null;
   }> | null;
 };
-
-export const SignupDocument = `
-    mutation Signup($input: SignupInput!) {
-  signup(input: $input) {
-    id
-    email
-    username
-    userType
-  }
-}
-    `;
-
-export const useSignupMutation = <TError = unknown, TContext = unknown>(
-  options?: UseMutationOptions<
-    SignupMutation,
-    TError,
-    SignupMutationVariables,
-    TContext
-  >
-) => {
-  return useMutation<SignupMutation, TError, SignupMutationVariables, TContext>(
-    {
-      mutationKey: ['Signup'],
-      mutationFn: (variables?: SignupMutationVariables) =>
-        fetcher<SignupMutation, SignupMutationVariables>(
-          SignupDocument,
-          variables
-        )(),
-      ...options,
-    }
-  );
-};
-
-useSignupMutation.fetcher = (
-  variables: SignupMutationVariables,
-  options?: RequestInit['headers']
-) =>
-  fetcher<SignupMutation, SignupMutationVariables>(
-    SignupDocument,
-    variables,
-    options
-  );
 
 export const GetUsersDocument = `
     query GetUsers {
