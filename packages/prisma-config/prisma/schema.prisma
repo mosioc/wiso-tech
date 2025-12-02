@@ -18,15 +18,58 @@ enum UserType {
   MENTOR
   LEARNER
 }
-
+ 
 model User {
-  id                Int       @id @default(autoincrement())
+  id                String    @id @default(cuid())
   email             String    @unique
+  emailVerified     Boolean   @default(false)
+  profilePhoto      String
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
   username          String
-  password          String
   yearsOfExperience Int
   expertise         String[]
-  profilePhoto      String
-  userType          UserType  // 👈 enum field
-  createdAt         DateTime  @default(now())
+  userType          UserType
+  sessions          Session[]
+  accounts          Account[]
+
+  name              String?
+
+  
+  @@map("user")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id @default(cuid())
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
 }
